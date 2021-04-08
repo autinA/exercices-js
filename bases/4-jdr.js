@@ -9,6 +9,20 @@ let character = {
     }
 };
 
+// Initialisation du Maitre du Donjon
+let dungeonMaster = {
+    hp: 150,
+    weapon: {
+        strength: 6
+    },
+    armour: {
+        defense: 4
+    },
+    isAlive: function () {
+        return this.hp > 0;
+    }
+};
+
 // On prépare le tableau des armes
 let weapons = {
     bois: {
@@ -54,20 +68,6 @@ while (chooseArmour != 'bois' && chooseArmour != 'fer' && chooseArmour != 'magiq
 
 // On récupère l'armure dans la matière demandée (exemple : armours['bois'])
 character.armour = armours[chooseArmour];
-
-// Initialisation du Maitre du Donjon
-let dungeonMaster = {
-    hp: 150,
-    weapon: {
-        strength: 6
-    },
-    armour: {
-        defense: 4
-    },
-    isAlive: function () {
-        return this.hp > 0;
-    }
-};
 
 // Compte des tours
 let i = 1;
