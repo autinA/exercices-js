@@ -20,6 +20,7 @@ inner.addEventListener('click', function (event) {
 });
 
 email.addEventListener('keyup', fillFormResult);
+// email.oninput = fillFormResult;
 email.addEventListener('change', fillFormResult);
 
 

@@ -23,7 +23,7 @@ let dungeonMaster = {
     }
 };
 
-// On prépare le tableau des armes
+// On prépare les armes
 let weapons = {
     bois: {
         strength: 2
@@ -36,7 +36,7 @@ let weapons = {
     }
 };
 
-// On prépare le tableau des armures
+// On prépare les armures
 let armours = {
     bois: {
         defense: 1
