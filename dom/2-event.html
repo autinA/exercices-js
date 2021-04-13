@@ -12,12 +12,21 @@
 <body>
     <div id="wrapper">
         <a href="" id="inner">Un lien cliquable</a>
-        <span>Un texte qui va se dupliquer quand on clic dessus.</span>
+        <span id="to-clone">Un texte qui va se dupliquer quand on clic dessus.</span>
     </div>
 
     <form class="form">
         <label for="email">Email</label>
         <input type="email" id="email">
+
+        <div>
+            <input type="radio" name="test" id="radio-1" value="premier">
+            <label for="radio-1">Un premier</label>
+        </div>
+        <div>
+            <input type="radio" name="test" id="radio-2" value="second">
+            <label for="radio-2">Un second</label>
+        </div>
 
         <button>Valider</button>
     </form>
