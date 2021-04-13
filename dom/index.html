@@ -28,12 +28,26 @@
 
     <div id="counter"></div>
 
-    <button class="truc red button">
+    <a href="" class="truc red button">
         Bouton !
-    </button>
+    </a>
 
     <!-- Changer le nom du fichier dans l'attribut src pour passer d'un exercice à l'autre -->
-    <script type="text/javascript" src="1-dom.js"></script>
+    <script type="text/javascript">
+        let button = document.querySelector('.button');
+
+        window.addEventListener('click', onClick);
+        button.addEventListener('click', onClick2);
+
+        function onClick() {
+            console.log('mais vous avez cliqué :O !');
+        }
+        function onClick2(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            console.log('mais vous avez cliqué sur le bouton :O !');
+        }
+    </script>
 </body>
 
 </html>
