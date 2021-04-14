@@ -69,7 +69,7 @@ let main = $('main');
 main.prepend(`Il y a ${countArticles} articles`);
 
 articles.on('mouseenter', function (event) {
-    // let id = $(this).attr('data-id');
-    let id = $(event.target).data('id');
-    $(this).attr('id', 'article-' + id);
+    // let number = $(this).attr('data-number');
+    let number = $(event.target).data('number');
+    $(this).attr('id', 'article-' + number);
 });

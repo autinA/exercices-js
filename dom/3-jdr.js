@@ -37,26 +37,26 @@ let armours = {
 
 
 // On récupère les noeuds du HTML dont on va avoir besoin
-let form = document.querySelector('form#form');
-let resultTitle = document.querySelector('[data-result-title]');
-let resultDetail = document.querySelector('[data-result-detail]');
+let form = $('form#form');
+let resultTitle = $('[data-result-title]');
+let resultDetail = $('[data-result-detail]');
 
 // Tout notre JS va se déclencher quand le formulaire est soumis
 // On ne veut pas le faire avant, pour être sûr d'avoir les informations contenus dans le formulaire
 
 // On ajoute un événement sur le formulaire, quand il est soumis (soit en cliquant sur le bouton, en appuyant sur la touche Entrée ou même s'il est soumis en JS !)
-form.addEventListener('submit', function (event) {
+form.on('submit', function (event) {
     event.preventDefault();
 
     // On récupère l'input qui a été coché par l'utilisateur
-    let weapon = document.querySelector('input[name="weapon"]:checked');
+    let weapon = $('input[name="weapon"]:checked');
     // On récupère sa valeur wood, iron ou magic
-    let chosenWeapon = weapon.value;
+    let chosenWeapon = weapon.val();
     // On récupère la valeur correspondante
     player.strength = weapons[chosenWeapon];
 
-    let armour = document.querySelector('input[name="armour"]:checked');
-    let chosenArmour = armour.value;
+    let armour = $('input[name="armour"]:checked');
+    let chosenArmour = armour.val();
     player.defense = armours[chosenArmour];
 
     // Maintenant que tout le monde a des armes en main, on peut commencer la bataille
@@ -75,7 +75,7 @@ function startBattle() {
     dungeonMaster.hp = randomInt(25, 35);
 
     // On vide la liste affichant le détail du combat, au cas où il y avait déjà quelque chose
-    resultDetail.innerHTML = "";
+    resultDetail.html("");
 
     // Tant que les deux personnages sont en vie, ils se battent
     while (dungeonMaster.isAlive() && player.isAlive()) {
@@ -98,10 +98,10 @@ function startBattle() {
             damageMessage += `Il vous a eu ! `;
         }
         // On crée un noeud li, qu'on ajouter à notre liste
-        let log = document.createElement('li');
+        let log = $('<li>');
         // On donne à ce li un contenu (HTML), incluant notre message précédent
-        log.innerHTML = "Le Maître du Donjon attaque ! " + damageMessage;
-        resultDetail.appendChild(log);
+        log.html("Le Maître du Donjon attaque ! " + damageMessage);
+        resultDetail.append(log);
 
         // Si le joueur est toujours en vie, on fait la même chose !
         if (player.isAlive()) {
@@ -118,16 +118,17 @@ function startBattle() {
             } else {
                 damageMessage += `Vous l'avez eu ! `;
             }
-            let log = document.createElement('li');
-            log.innerHTML = "A votre tour ! " + damageMessage;
-            resultDetail.appendChild(log);
+            let log = $('<li>');
+            // On donne à ce li un contenu (HTML), incluant notre message précédent
+            log.html("A votre tour ! " + damageMessage);
+            resultDetail.append(log);
         }
     }
 
     // Si le joueur est en vie, c'est qu'il a gagné, sinon le Maître a triomphé
     if (player.isAlive()) {
-        resultTitle.textContent = "Vous avez triomphé du Maître du Donjon !";
+        resultTitle.text("Vous avez triomphé du Maître du Donjon !");
     } else {
-        resultTitle.textContent = "Le mal triomphe !";
+        resultTitle.text("Le mal triomphe !");
     }
 }
