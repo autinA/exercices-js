@@ -63,7 +63,6 @@ $('footer a').on('click', function (event) {
     event.preventDefault();
 });
 
-let articles = $('article');
 let countArticles = articles.length;
 let main = $('main');
 main.prepend(`Il y a ${countArticles} articles`);
