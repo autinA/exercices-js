@@ -18,12 +18,6 @@ links.on('click', function (event) {
     // return false; // équivalent au preventDefault, mais uniquement en JQuery
 });
 
-paragraphs.hover(event => {
-    console.log('Vous entrez');
-}, event => {
-    console.log('Vous sortez');
-});
-
 // Equivalent avec 2 événements
 //
 // paragraphs.on('mouseenter', function () {
@@ -33,3 +27,49 @@ paragraphs.hover(event => {
 // paragraphs.on('mouseleave', function () {
 //     console.log('vous sortez');
 // })
+
+paragraphs.hover(function (event) {
+    $(this).addClass('paragraph--hovered');
+    console.log('Vous entrez');
+
+    // Equivalent à
+    // let self = $(event.target);
+    // self.addClass('paragraph--hovered');
+}, function (event) {
+    $(this).removeClass('paragraph--hovered');
+    console.log('Vous sortez');
+
+    // Equivalent à
+    // let self = $(event.target);
+    // self.removeClass('paragraph--hovered');
+});
+
+// D'autres manières de faire la même chose
+
+// paragraphs.on('mouseenter', function () {
+//     $(this).addClass('paragraph--hovered');
+// });
+
+// paragraphs.on('mouseleave', function () {
+//     $(this).removeClass('paragraph--hovered');
+// });
+
+// paragraphs.hover(function () {
+//     $(this).toggleClass('paragraph--hovered');
+// });
+
+$('footer a').on('click', function (event) {
+    $(this).html('Ce lien a été cliqué');
+    event.preventDefault();
+});
+
+let articles = $('article');
+let countArticles = articles.length;
+let main = $('main');
+main.prepend(`Il y a ${countArticles} articles`);
+
+articles.on('mouseenter', function (event) {
+    // let id = $(this).attr('data-id');
+    let id = $(event.target).data('id');
+    $(this).attr('id', 'article-' + id);
+});
