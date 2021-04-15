@@ -65,6 +65,14 @@ form.on('submit', function (event) {
 
 // On crée une fonction pour avoir un nombre aléatoire entre 2 valeurs (les deux sont incluses et peuvent être renvoyées)
 function randomInt(min, max) {
+    // Attention, code récupéré ici : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random#obtenir_un_entier_al%C3%A9atoire_dans_un_intervalle_ferm%C3%A9
+
+    // min = 2, max = 13
+    // Math.floor(): arrondie à l'entier inférieur (ex: 2.8 devient 2)
+    // Math.random(): Renvoie un nombre entre 0 et 1 : [0, 1[ (ne renvoie jamais 1)
+    // (max - min + 1): (13 - 2 + 1) = 12 donc mon nombre aléatoire généré est entre 0 et 12 (exclu) : [0, 12[
+    // (max - min + 1) + min: mon nombre aléatoire généré est entre 2 et 14 (exclu): [2, 14[
+    // Donc mon résultat (une fois Math.floor() appliquée) est entre 2 et 13 (inclus)
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
